@@ -3,45 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Weather App</title>
   <link rel="stylesheet" href="/bootstrap-5.3.8-dist/css/bootstrap.min.css">
 </head>
 <body style="background-color: #f8f9fa; background-image: url('asset/image/premium_photo-1685868556097-641c237f3fa5.avif'); background-size: cover; background-repeat: no-repeat; min-height: 100vh;">
+  
   <div class="container">
-      <h1 class="text-center text-light">Weather App</h1>
-         <div class="justify-content-center row">
-<div class=" text-center my-4 col-sm-3  shadow ">
-        <input type="text" class="form-control " placeholder="enter your name" id="inputName1" style="border: none">
-</div>
-  <div class="col-sm-2 my-4">
-<button class="btn  btn-dark" id="nameBtn">ok</button> 
-                 
-    </div>
+    <h1 class="text-center text-light mt-4">Weather App</h1>
 
+    
+    <div class="row justify-content-center mt-5 g-2">
+      <div class="col-8 col-sm-6 col-md-4">
+        <input type="text" class="form-control shadow" placeholder="Enter your name" id="inputName1" style="border: none;">
+      </div>
+      <div class="col-4 col-sm-2 col-md-2">
+        <button class="btn btn-dark w-50 h-100" id="nameBtn">OK</button>
+      </div>
+    </div>
   </div>
 
   <script>
     const inputName = document.getElementById("inputName1");
     const okBtn = document.getElementById("nameBtn");
 
-      
-    
-    okBtn.addEventListener("click",function(e){
-      e.preventDefault()
-      
-      if(!inputName.value){
-            alert("enter your name")
-            return;
-        }else{
-            window.location.href = "index2.html"
-        }
-      let username =localStorage.setItem("name", inputName.value)
-     
-      
-      
+    okBtn.addEventListener("click", function (e) {
+      e.preventDefault();
 
-    })
+      if (!inputName.value) {
+        alert("Please enter your name");
+        return;
+      }
+
+      localStorage.setItem("name", inputName.value);
+      window.location.href = "index2.html";
+    });
   </script>
-   
 </body>
 </html>
