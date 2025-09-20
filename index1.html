@@ -30,36 +30,60 @@
 
     <div class="row justify-content-center g-2 mt-3">
       <div class="col-8 col-sm-6 col-md-4">
-        <input type="password" class="form-control shadow" placeholder="Enter your password" id="inputName1" style="border: none;">
+        <input type="text" class="form-control shadow" placeholder="Enter your username" id="inputName1" style="border: none;">
       </div>
-      <div class="col-4 col-sm-2 col-md-2 d-flex align-items-stretch">
-        <button class="btn btn-dark w-50 ms-3" id="loginBtn">Log in</button>
       </div>
-    </div>
+      <div class="row justify-content-center g-2 mt-3">
+      <div class="col-8 col-sm-6 col-md-4">
+        <input type="password" class="form-control shadow" placeholder="Enter your password" id="inputName2" style="border: none;">
+      </div>
+      </div>
+      <div class="row justify-content-center g-2 mt-3">
+         <div class="col-4 col-sm-2 col-md-2 d-flex align-items-stretch">
+           <button class="btn btn-dark w-50 ms-5" id="loginBtn">Log in</button>
+        </div>
+      </div>
+    
   </div>
 
   <script>
-    const inputName = document.getElementById("inputName1");
-    const loginBtn = document.getElementById("loginBtn");
+  const inputName = document.getElementById("inputName1");
+  const inputPassword = document.getElementById("inputName2");
+  const loginBtn = document.getElementById("loginBtn");
 
-    loginBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (!inputName.value) {
-        alert("Please enter your password");
-        return;
-      }
+  loginBtn.addEventListener("click", function (e) {
+    e.preventDefault();
 
-      if (!localStorage.getItem("password")) {
-        alert("Please enter correct password");
-        return;
-      } else if (inputName.value !== localStorage.getItem("password")) {
-        alert("Please enter correct password");
-        return;
-      }
+    let usernames = JSON.parse(localStorage.getItem("usernames")) || [];
+    let passwords = JSON.parse(localStorage.getItem("passwords")) || [];
 
-      window.location.href = "index2.html";
-    });
-  </script>
+    
+    if (!inputName.value) {
+      alert("Please enter your username");
+      return;
+    }
+
+    if (!inputPassword.value) {
+      alert("Please enter your password");
+      return;
+    }
+    let userIndex = usernames.indexOf(inputName.value);
+    if (userIndex === -1) {
+      alert("Username not found");
+      return;
+    }
+
+    
+    if (passwords[userIndex] !== inputPassword.value) {
+      alert("Incorrect password");
+      return;
+    }
+
+
+    window.location.href = "index2.html";
+  });
+</script>
+
 </body>
 </html>
 
