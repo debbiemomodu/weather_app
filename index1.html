@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body style="
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f9fa;
+  background-image: url('asset/image/premium_photo-1685868556097-641c237f3fa5.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+">
+  
+  <div class="container" style="width: 100%;">
+    <div class="d-flex mt-3">
+      <img src="asset/image/download.png" style="width: 40px; height: 40px;" alt=""> 
+      <b class="text-light pt-2 text-center ms-2">Weather</b>
+    </div>
+
+    <h1 class="text-center text-light mt-4">Weather App</h1>
+
+    <div class="row justify-content-center g-2 mt-3">
+      <div class="col-8 col-sm-6 col-md-4">
+        <input type="password" class="form-control shadow" placeholder="Enter your password" id="inputName1" style="border: none;">
+      </div>
+      <div class="col-4 col-sm-2 col-md-2 d-flex align-items-stretch">
+        <button class="btn btn-dark w-50 ms-3" id="loginBtn">Log in</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const inputName = document.getElementById("inputName1");
+    const loginBtn = document.getElementById("loginBtn");
+
+    loginBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (!inputName.value) {
+        alert("Please enter your password");
+        return;
+      }
+
+      if (!localStorage.getItem("password")) {
+        alert("Please enter correct password");
+        return;
+      } else if (inputName.value !== localStorage.getItem("password")) {
+        alert("Please enter correct password");
+        return;
+      }
+
+      window.location.href = "index2.html";
+    });
+  </script>
+</body>
+</html>
+
